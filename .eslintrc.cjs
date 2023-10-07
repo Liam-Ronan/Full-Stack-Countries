@@ -1,11 +1,16 @@
 module.exports = {
   root: true,
-  env: { browser: true, es2020: true },
+  env: { browser: true,
+         es2020: true,
+         node: true,
+         commonjs: true
+       },
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
     'plugin:react-hooks/recommended',
+    "eslint-disable-line no-unused-vars"
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
