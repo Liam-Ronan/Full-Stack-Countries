@@ -15,20 +15,22 @@ const AllCountryCards = () => {
   }, []);
 
   return (
-    <div className="container-fluid py-5 bg-dark bg-gradient">
+    <div className="container-fluid py-5 bg-dark">
       <div className="container">
         <div className="row">
           {countryData.map((country) => (
-            <a href="#" className='col-md-3 col-sm-3 mb-3 text-decoration-none'>
-                <div key={country.cca3} className="">
-                    <div className="card bg-dark">
-                        <img src={country.flags.png} className="img-fluid"/>
-                        <div className="card-body">
-                        <h5 className="card-title fs-5 text-light fw-light">{country.name.common}</h5>
-                        </div>
-                    </div>
-                </div>
-            </a>
+            <div className="col-lg-3 col-sm-6 mb-5">
+              <div className="card h-100 bg-black rounded-3">
+                <img src={country.flags.png} className="card-img-top h-100" alt="..."/>
+                  <div className="card-body bg-black text-light rounded-bottom-5">
+                    <h5 className="card-title fs-2 fw-bold mb-3">{country.name.common}</h5>
+                    <h6 className="card-text fw-light">Region: {country.region}</h6>
+                    <h6 className="card-text fw-light">Sub-Region: {country.subregion}</h6>
+                    <h6 className="card-text fw-light">Capital: {country.capital}</h6>
+                    <h6 className="card-text fw-light">Population: {country.population}</h6>
+                  </div>
+            </div>
+            </div>
           ))}
         </div>
       </div>
