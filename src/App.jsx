@@ -1,17 +1,17 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import './App.css'
 import AllCountryCards from './components/AllCountryCards'
 import CountryDetail from './components/CountryDetail'
 
 const App = () => {
   return (
-    <div>
+    <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<AllCountryCards />} />
-          <Route path='/countries/:countryName' element={<CountryDetail />} />
+          <Route exact path="/" element={ <AllCountryCards/> } />
+          <Route path='/:countryName' element={ <CountryDetail />} />
         </Routes>
-    </div>
+    </BrowserRouter>
   )
 }
 

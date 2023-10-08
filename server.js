@@ -80,9 +80,9 @@ app.get('/countries', async (req, res) => {
     try {
         /* - for each country in array
            - getCountryData is called for each country in the list */
-        const countryData = countriesList.map((countryName) => {
-            return getCountryData(countryName)
-        })
+           const countryData = countriesList
+            .filter((countryName) => countryName)
+            .map((countryName) => getCountryData(countryName));
         
         // Wait for promises to resolve
         const countryDataList = await Promise.all(countryData)
@@ -92,6 +92,7 @@ app.get('/countries', async (req, res) => {
 
         //Sends countries data as JSON to client
         res.json(validCountryData)
+        
     } 
     catch(err) {
         console.log(`Error retrieving data:`, err);
@@ -101,23 +102,25 @@ app.get('/countries', async (req, res) => {
 
 app.get('/countries/:countryName', async (req, res) => {
     try {
-        const countryName= req.params.countryName;
+        const countryName = req.params.countryName;
 
         const countryData = await getCountryData(countryName)
 
-        if(countryData) {
-            res.json(countryData)
-        }
-        else {
-            res.status(404).json({ error: 'Country not found'})
-        }
+            if(countryData) {
+                res.json(countryData)
+            }
+            else {
+                res.status(404).json({ error: 'Country not found'})
+            }
+        
     } 
     catch(error) {
-        console.log('Error retrieving data', err);
+        console.log('Error retrieving data', error);
         res.status(500).json({ error: 'Server error'})
     }
 
 })
+
 
 app.listen(PORT, () => {
     console.log(`Your Server is running on Port: ${PORT}`);
