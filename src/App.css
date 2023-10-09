@@ -1,12 +1,16 @@
 
-.card{
+.card-body  {
+    background-color: #535459;
+}
+
+.card {
     transition: all 0.6s ease;
     cursor: pointer;
 }
 
     
 .card:hover{
-    box-shadow: 5px 6px 6px 2px hsla(0, 2%, 63%, 0.142);
+    box-shadow: 5px 6px 6px 5px hsla(186, 87%, 44%, 0.142);
     transform: scale(1.05);
 }
 

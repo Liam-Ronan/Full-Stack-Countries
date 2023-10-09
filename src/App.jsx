@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import './App.css'
-import AllCountryCards from './components/AllCountryCards'
-import CountryDetail from './components/CountryDetail'
+import AllCountryCards from './components/CountryCards/AllCountryCards'
+import CountryDetail from './components/CountryDetails/CountryDetails'
 
 const App = () => {
   return (

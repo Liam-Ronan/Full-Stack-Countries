@@ -61,7 +61,7 @@ app.get('/', (req, res) => {
 async function getCountryData(countryName) {
     try {
         // Retrieving data for specified country from the API
-        const response = await axios.get(`https://restcountries.com/v3.1/name/${countryName}`)
+        const response = await axios.get(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
        /* Extracting data from HTTP response
         - React components can consistently
         - expect data structure to be the same
