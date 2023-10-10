@@ -8,7 +8,9 @@ const AllCountryCards = () => {
   const [searchQuery, setSearchQuery] = useState(''); 
   const [filteredCountries, setFilteredCountries] = useState([]);
 
+
   /* useEffect hook to fetch data from back-end & updates setCountryData with the fetched data */
+  // Getting all countries
   useEffect(() => {
     const getAllCountries = async () => {
       try {
@@ -24,7 +26,7 @@ const AllCountryCards = () => {
     getAllCountries()
   }, []);
 
-
+  
   /* Defined functions to handle search input */
   //Called when user types in the input field, updates state with the user's input
   const handleSearchInputChange = (e) => {
@@ -49,6 +51,7 @@ const AllCountryCards = () => {
     
     <div className="bg-colour vh-100">
          <div className="container-fluid bg-colour pt-5">
+
           <Header />
             <Search
               searchQuery={searchQuery}
@@ -56,6 +59,7 @@ const AllCountryCards = () => {
               handleSearchSubmit={handleSearchSubmit}
             />
           <Countries countries={countriesToMap} />
+
         </div>
     </div>
   );

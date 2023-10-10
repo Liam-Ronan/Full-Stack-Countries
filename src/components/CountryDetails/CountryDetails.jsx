@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import App from '../../App';
 import { Header } from '../Header';
 import CountryDetailCard from './CountryDetailCard';
 
@@ -33,7 +32,7 @@ const CountryDetail = () => {
     
     <>
       <Header />
-      {countryData ? <CountryDetailCard countryData={countryData} /> : <p className='text-light fs-3'>Loading...</p>}
+      {countryData ? <CountryDetailCard countryData={countryData} /> : <p className='text-dark fs-3'>Loading...</p>}
     </>      
       
       

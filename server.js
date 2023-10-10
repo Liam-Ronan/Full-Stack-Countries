@@ -6,7 +6,7 @@ import cors  from 'cors'
 const app = express()
 const PORT = process.env.PORT || 3000;
 
-// List of countries to retrieve data for
+// List of countries to retrieve data from the API
 const countriesList = [
     "Albania",
     "Andorra",
@@ -42,7 +42,7 @@ const countriesList = [
 
 // Adding middleware to parse through the JSON data/URL-encoded data
 app.use(express.json());
-// 
+// Simple CORS usage (Enable all CORS requests)
 app.use(cors())
 // Handle encoded data - spaces, special chars etc.
 app.use(express.urlencoded({ extended: true }))
@@ -57,13 +57,12 @@ app.get('/', (req, res) => {
     }
 })
 
-//Async function to retrieve data only for specified countries above
+// Async function to retrieve data only for specified countries above in countryList
 async function getCountryData(countryName) {
     try {
         // Retrieving data for specified country from the API
         const response = await axios.get(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
        /* Extracting data from HTTP response
-        - React components can consistently
         - expect data structure to be the same
         - ease of mapping an array of objects */
         return response.data[0];
@@ -80,17 +79,17 @@ app.get('/countries', async (req, res) => {
     try {
         /* - for each country in array
            - getCountryData is called for each country in the list */
-           const countryData = countriesList
-            .filter((countryName) => countryName)
-            .map((countryName) => getCountryData(countryName));
+        const countryData = countriesList
+           .filter((country) => country)
+           .map((country) => getCountryData(country));
         
         // Wait for promises to resolve
         const countryDataList = await Promise.all(countryData)
 
-        // Filter out countries where data could not be retrieved
+        // Checking each element in countryDataList & only incl elements in the array if they are not null
         const validCountryData = countryDataList.filter((data) => data !== null);
 
-        //Sends countries data as JSON to client
+        //Saves countries data as JSON
         res.json(validCountryData)
         
     } 
@@ -100,18 +99,14 @@ app.get('/countries', async (req, res) => {
     }
 })
 
+// Endpoint for countryDetails receive the data when a name is passed
 app.get('/countries/:countryName', async (req, res) => {
     try {
         const countryName = req.params.countryName;
 
         const countryData = await getCountryData(countryName)
 
-            if(countryData) {
-                res.json(countryData)
-            }
-            else {
-                res.status(404).json({ error: 'Country not found'})
-            }
+        countryData ? res.json(countryData) : res.status(404).json({error: 'Country not found'})
         
     } 
     catch(error) {
@@ -121,7 +116,7 @@ app.get('/countries/:countryName', async (req, res) => {
 
 })
 
-
+// app listening on PORT variable assigned above
 app.listen(PORT, () => {
     console.log(`Your Server is running on Port: ${PORT}`);
 })

@@ -5,6 +5,7 @@ const Countries = ({ countries }) => {
   return (
     <div className="container pt-5">
           <div className="row">
+
               {countries.map((country) => (
               <div key={country.cca3} className="col-md-3 col-sm-6 mb-5 p-4">
                 <Link className="text-decoration-none" to={`/${country.name.common}`} state={{countryData: country}}>
@@ -17,6 +18,7 @@ const Countries = ({ countries }) => {
                 </Link>
               </div>
               ))}
+              
           </div>
         </div>
   );
