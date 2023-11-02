@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const CountryDetailCard = ({ countryData }) => {
   return (
     <div className="container-fluid bg-colour">
-        <div className="row py-1 d-flex justify-content-center bg-colour">
+        <div className="row pt-4 d-flex justify-content-center bg-colour">
 
             <h1 className='display-5 fw-normal text-light d-flex justify-content-center pb-5 mb-5'>{countryData.name.common}</h1>
 
@@ -20,7 +20,7 @@ const CountryDetailCard = ({ countryData }) => {
             </div>
 
             <div className="container d-flex justify-content-center mt-4 pb-5 mb-5">
-            <Link className="text-decoration-none btn btn-outline-light mt-5 mb-5 w-25" to="/">Back</Link>
+            <Link className="text-decoration-none btn btn-outline-light mt-3 mb-5 w-25" to="/">Back</Link>
             </div>
 
         </div>

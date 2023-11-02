@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Header } from '../Header';
 import { Search } from '../Search';
 import Countries from './CountryCard';
+import axios from 'axios';
 
 const AllCountryCards = () => {
   const [countryData, setCountryData] = useState([]);
+  const allCountriesURL = 'https://restcountries.com/v3.1/all'
   const [searchQuery, setSearchQuery] = useState(''); 
   const [filteredCountries, setFilteredCountries] = useState([]);
 
@@ -12,15 +14,14 @@ const AllCountryCards = () => {
   /* useEffect hook to fetch data from back-end & updates setCountryData with the fetched data */
   // Getting all countries
   useEffect(() => {
-    const getAllCountries = async () => {
-      try {
-        const res = await fetch(`http://localhost:3000/countries`)  
-        const data = await res.json();
-        setCountryData(data);
-      } 
-      catch(err) {
+    const getAllCountries = () => {
+      axios.get(allCountriesURL)
+      .then(res => {
+        setCountryData(res.data);
+      })
+      .catch(err => {
         console.error(err)
-      }
+      })
     }
   
     getAllCountries()
