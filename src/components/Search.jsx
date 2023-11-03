@@ -2,6 +2,8 @@ import React from 'react';
 import { Form } from 'react-bootstrap'
 
 export const Search = ({ searchQuery, handleSearchInputChange, handleSearchSubmit }) => {
+
+  
   return (
       <Form onSubmit={handleSearchSubmit} className="w-50 text-dark">
         <Form.Group className="form-floating rounded-3">

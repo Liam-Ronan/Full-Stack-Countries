@@ -12,8 +12,6 @@ const AllCountryCards = () => {
   const allCountriesURL = 'https://restcountries.com/v3.1/all'
   const [searchQuery, setSearchQuery] = useState(''); 
   const [filteredCountries, setFilteredCountries] = useState([]);
-  // const [filteredRegions, setFilteredRegions] =useState([]);
-
 
   /* useEffect hook to fetch data from back-end & updates setCountryData with the fetched data */
   // Getting all countries
@@ -34,13 +32,14 @@ const AllCountryCards = () => {
   
   const countriesByRegion = (regionName) => {
       
-      if(regionName == 'all') {
+      if(regionName === 'all') {
         axios.get(allCountriesURL)
         .then(res => {
-          setCountryData(res.data)
-        }).catch(err => {
-          console.error(err)
+          setCountryData(res.data);
         })
+        .catch(err => {
+          console.error(err)
+      })
       }
       else {
         axios.get(`https://restcountries.com/v3.1/region/${regionName}`)
@@ -53,8 +52,6 @@ const AllCountryCards = () => {
       }
   }
 
-
-  
   /* Defined functions to handle search input */
   //Called when user types in the input field, updates state with the user's input
   const handleSearchInputChange = (e) => {
