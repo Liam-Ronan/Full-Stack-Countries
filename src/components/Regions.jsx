@@ -11,7 +11,7 @@ const Regions = ({ onSelect }) => {
   return (
     
     <Form.Select onChange={selectHandler}>
-      <option value="all">all</option>
+      <option value="all">All</option>
       <option value="Africa">Africa</option>
       <option value="America">America</option>
       <option value="Asia">Asia</option>
