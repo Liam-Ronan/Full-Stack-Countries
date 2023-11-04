@@ -10,7 +10,7 @@
 
     
 .card:hover{
-    box-shadow: 5px 6px 6px 5px hsla(186, 87%, 44%, 0.142);
+    box-shadow: 5px 6px 6px 5px hsla(186, 73%, 75%, 0.142);
     transform: scale(1.05);
 }
 
