@@ -2,8 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Image } from 'react-bootstrap'
 
-const weatherApiKey = import.meta.env.VITE_WEATHER_API_KEY;
-
 const CountryDetailCard = ({ countryData }) => {
   return (
     <Container fluid className='bg-colour pt-4'>
