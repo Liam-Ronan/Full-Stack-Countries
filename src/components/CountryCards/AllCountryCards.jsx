@@ -5,7 +5,7 @@ import Countries from './CountryCard';
 import axios from 'axios';
 import Regions from '../Regions';
 
-import {Container, Row, Col} from 'react-bootstrap';
+import { Row, Col} from 'react-bootstrap';
 
 const AllCountryCards = () => {
   const [countryData, setCountryData] = useState([]);
@@ -73,12 +73,11 @@ const AllCountryCards = () => {
   const countriesToMap = searchQuery ? filteredCountries : countryData;
 
   return (
-         <Container fluid className='bg-colour pt-4'>
-
+         
+      <>
             <Header />
             
-            <Container>
-              <Row>
+              <Row className='pt-3'>
                 <Col sm={10} className='px-4'>
                   <Search
                     searchQuery={searchQuery}
@@ -90,11 +89,12 @@ const AllCountryCards = () => {
                   <Regions onSelect={countriesByRegion}/>
                 </Col>
               </Row>
-            </Container>
             
             <Countries countries={countriesToMap} />
+      </>
 
-        </Container>
+
+        
     
   );
 };

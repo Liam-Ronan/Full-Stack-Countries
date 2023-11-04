@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { Card, Container, Row, Col } from 'react-bootstrap'
+import { Card, Row, Col } from 'react-bootstrap'
 
 const Countries = ({ countries }) => {
   return (
-    <Container className='pt-5'>
-          <Row>
+    
+          <Row className='pt-5 bg-colour'>
 
               {countries.map((country) => (
 
@@ -26,7 +26,7 @@ const Countries = ({ countries }) => {
               ))}
               
           </Row>
-    </Container>
+    
   );
 };
 
