@@ -15,7 +15,8 @@ const WeatherDetailsCard = ({ countryData }) => {
         .then(res => {
           const data = res.data;
 
-          data && data.current ? (setWeatherData(data)) : console.error("Weather data structure is not as expected")
+          data && data.current ? (setWeatherData(data)) : console.error("Weather data is not as expected")
+          console.log(data);
         })
         .catch(err => {
           console.error(err);
@@ -29,8 +30,14 @@ const WeatherDetailsCard = ({ countryData }) => {
     return (
       <Container>
         <Row className='pt-5'>
-          <h1 className='fw-normal'>{countryData.name.common} Current Weather</h1>
-          <h2 className='text-light'>{weatherData.current.temp_c.toFixed(0)}°C</h2>
+          <Col md={6}>
+            <h1 className='fw-normal'>{countryData.name.common} Current Weather</h1>
+            <h2 className='text-light'>{weatherData.current.temp_c.toFixed(0)}°C</h2>
+          </Col>
+          <Col md={6}>
+            <h1 className='fw-normal'>{countryData.name.common} Current Weather</h1>
+            <h2 className='text-light'>{weatherData.current.temp_c.toFixed(0)}°C</h2>
+          </Col>
         </Row>
       </Container>
     );

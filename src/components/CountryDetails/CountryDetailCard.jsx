@@ -50,26 +50,21 @@ const CountryDetailCard = ({ countryData }) => {
 
         <h1 className='display-5 fw-normal'>{countryData.name.common}</h1>
 
-      <Container className='p-5'>
-        <Row className="p-5 d-flex justify-content-center">
-            <Image src={countryData.flags.png} className="w-25 mx-5" alt="Flag" />
-            
-            {countryData.coatOfArms.png ? (
-                  <Image src={countryData.coatOfArms.png} className='w-25 mx-5' alt="Coat Of Arms"/>
-            ) : null}
-        </Row>
-      </Container>
-     
+        <Container className='p-5'>
+          <Row className="p-5 d-flex justify-content-center">
+            <Col md={4} className='d-flex align-content-center'>
+              <Image src={countryData.flags.png} className="img-fluid" alt="Flag" />
+            </Col>
+             
+            <Col md={4} className='d-flex align-content-center'>
+              {countryData.coatOfArms.png ? (
+                      <Image src={countryData.coatOfArms.png} className='img-fluid' alt="Coat Of Arms"/>
+                ) : null}
+            </Col>
+          </Row>
+        </Container>  
 
-        <Container className=''>
-          <Button className='px-5' variant='light'>
-            <a href={countryData.maps.googleMaps} target="_blank" rel="noopener noreferrer" className='text-dark fw-bold text-decoration-none'>{countryData.name.common} Map</a>
-          </Button>
-        </Container>
-
-        
-
-        <Container className='pt-5 mb-5 pb-5 text-start d-flex justify-content-center'>
+       <Container className='pt-2 mb-5 pb-2 text-center d-flex justify-content-center'>
           <Row>
             <Col md={4} className='px-5'>
               <h5 className='pt-3 fw-normal'>Region: <strong>{countryData.region}</strong></h5>
@@ -96,10 +91,13 @@ const CountryDetailCard = ({ countryData }) => {
               ) : <h5 className='pt-3 fw-normal'>{countryData.name.common} is <strong>Not Landlocked</strong></h5>}
             </Col>
           </Row>
-          
         </Container>   
 
-        <hr className='border border-3 mt-5 border-white'/>
+        <Container>
+          <Button className='px-3' variant='light'>
+            <a href={countryData.maps.googleMaps} target="_blank" rel="noopener noreferrer" className='text-dark fw-bold text-decoration-none'>{countryData.name.common} Map</a>
+          </Button>
+        </Container>
 
         {countryData ? <WeatherDetailsCard countryData={countryData} /> : <p className='text-dark fs-3'>Loading...</p>}
 
