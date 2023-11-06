@@ -1,46 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Button, Image, Col } from 'react-bootstrap'
-import axios from 'axios';
 import WeatherDetailsCard from '../WeatherDetails/WeatherDetailsCard';
 
-
-const eventApiKey = import.meta.env.VITE_EVENT_API_KEY;
-
 const CountryDetailCard = ({ countryData }) => {
-
-  const [eventData, setEventData] = useState(null);
-
-
-  useEffect(() => {
-
-    const eventApiURL = `https://app.ticketmaster.com/discovery/v2/events?countryCode=${countryData.cca2}&apikey=${eventApiKey}`
-
-    const seenEventNames = new Set();
-
-    const fetchEventData = () => {
-      axios.get(eventApiURL)
-      .then(res => {
-        const events = res.data._embedded.events;
-
-        const uniqueEvents = events.filter(event => {
-          if(seenEventNames.has(event.name)) {
-            return false;
-          }
-          else {
-            seenEventNames.add(event.name)
-            return true;
-          }
-        });
-        console.log(uniqueEvents);
-      })
-      .catch(err => {
-        console.error(err);
-      })
-    }
-
-    fetchEventData()
-  }, [countryData.cca2])
 
   return (
     <>
@@ -48,7 +11,7 @@ const CountryDetailCard = ({ countryData }) => {
         
         <Row className="pt-4 d-flex justify-content-center text-center text-light">
 
-        <h1 className='display-5 fw-normal'>{countryData.name.common}</h1>
+        <h1 className='display-4 fw-normal'>{countryData.name.common}</h1>
 
         <Container className='p-5'>
           <Row className="p-5 d-flex justify-content-center">
