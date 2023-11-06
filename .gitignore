@@ -17,6 +17,9 @@ dist-ssr
 !.vscode/extensions.json
 .idea
 .env
+.firebase
+.firebaserc
+firebase.json
 .DS_Store
 *.suo
 *.ntvs*

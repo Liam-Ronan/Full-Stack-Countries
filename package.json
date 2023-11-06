@@ -8,7 +8,8 @@
     "start": "nodemon ./server.js --exec babel-node",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "firebase deploy"
   },
   "dependencies": {
     "axios": "^1.5.1",
