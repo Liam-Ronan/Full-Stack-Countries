@@ -11,19 +11,26 @@ const CountryDetailCard = ({ countryData }) => {
         
         <Row className="pt-4 d-flex justify-content-center text-center text-light">
 
+        <Container className='p-2'>
+          <Row className='d-flex justify-content-center text-center'>
         <h1 className='display-4 fw-normal'>{countryData.name.common}</h1>
+        <Col md={2} xs={3} className=''>
+          <hr className='mt-2 border border-2 rounded-5 d-flex justify-content-center text-center'/>
+        </Col>
+      
 
-        <Container className='p-5'>
-          <Row className="p-5 d-flex justify-content-center">
+        
+          <Row className="p-5 d-flex justify-content-evenly">
             <Col md={4} className='d-flex align-content-center'>
-              <Image src={countryData.flags.png} className="img-fluid" alt="Flag" />
+              <Image src={countryData.flags.png} className="img-fluid rounded-3" alt="Flag" />
             </Col>
              
-            <Col md={4} className='d-flex align-content-center'>
+            <Col md={4} className='d-flex align-content-center p-3'>
               {countryData.coatOfArms.png ? (
                       <Image src={countryData.coatOfArms.png} className='img-fluid' alt="Coat Of Arms"/>
                 ) : null}
             </Col>
+          </Row>
           </Row>
         </Container>  
 

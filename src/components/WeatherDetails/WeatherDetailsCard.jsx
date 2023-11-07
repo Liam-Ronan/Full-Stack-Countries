@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Container, Row, Button, Image, Col } from 'react-bootstrap'
 import TimeDetails from '../TimeDetails';
+import App from '../../App.css';
 
 const weatherApiKey = import.meta.env.VITE_WEATHER_API_KEY;
 
