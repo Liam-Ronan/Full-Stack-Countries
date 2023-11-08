@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, Row, Button, Image, Col } from 'react-bootstrap'
+import { Container, Row, Image, Col } from 'react-bootstrap';
 import TimeDetails from '../TimeDetails';
-import App from '../../App.css';
+import '../../App.css'
 
 const weatherApiKey = import.meta.env.VITE_WEATHER_API_KEY;
 
@@ -17,7 +17,7 @@ const WeatherDetailsCard = ({ countryData }) => {
         .then(res => {
           const data = res.data;
 
-          data && data.current ? (setWeatherData(data)) : console.error("Weather data is not as expected")
+          data && data.current ? (setWeatherData(data)) : console.error("Weather data is not as expected");
           console.log(data);
         })
         .catch(err => {
@@ -30,27 +30,38 @@ const WeatherDetailsCard = ({ countryData }) => {
 
   if (weatherData) {
     return (
-      <Container className='py-5'>
-         <h1 className='display-4 fw-normal'>Current Weather</h1>
-         <h2 className='text-light'>{weatherData.current.temp_c.toFixed(0)}°C</h2>
-         <h4 className='text-light fw-light'>{weatherData.current.condition.text}</h4>
-         <Image src={weatherData.current.condition.icon} className='h-25'></Image>
-         
-         {countryData ? <TimeDetails countryData={countryData} /> : <p className='text-dark fs-3'>Loading...</p>}
-        <Row className='pt-5'>
-          <Col md={4} className='g-3'>
-            <h1 className='fw-normal'>{countryData.name.common} Current Weather</h1>
-            <h2 className='text-light'>{weatherData.current.temp_c.toFixed(0)}°C</h2>
-          </Col>
-          <Col md={4} className='g-3'>
-            <h1 className='fw-normal'>{countryData.name.common} Current Weather</h1>
-            <h2 className='text-light'>{weatherData.current.temp_c.toFixed(0)}°C</h2>
-          </Col>
-          <Col md={4} className='g-3'>
-            <h1 className='fw-normal'>{countryData.name.common} Current Weather</h1>
-            <h2 className='text-light'>{weatherData.current.temp_c.toFixed(0)}°C</h2>
-          </Col>
-        </Row>
+      <Container fluid className='p-5 blue rounded-4'>
+        <Container>
+          <Row className='d-flex justify-content-center text-center'>
+            <h1 className='display-3 fw-bold text-light'>Current Weather</h1>
+            <Col md={4} xs={5} className='hr rounded-3'></Col>
+            {countryData ? <TimeDetails countryData={countryData} /> : <p className='text-light fs-3'>Loading...</p>}
+          </Row>
+          
+          <Row className='d-flex justify-content-center text-center pt-3'>
+            <Col md={1}>
+              <Image src={weatherData.current.condition.icon} className='img-fluid h-100'></Image>
+            </Col>
+            <Col md={1} xs={4} className='d-flex align-items-center text-xs-center text-center'>
+              <h1 className='text-light display-2'>{weatherData.current.temp_c.toFixed(0)}°C</h1>
+            </Col>
+            <Col xs={12} className='text-center pt-3'>
+              <h5 className='text-light fw-light'>{weatherData.current.condition.text}</h5>
+            </Col>
+          </Row>
+
+          <Row className='pt-5 d-flex justify-content-center'>
+            <Col>
+             <h3 className='text-light display-5'>{weatherData.current.wind_kph}</h3>
+            </Col>
+            <Col>
+            <h3 className='text-light display-5'>{weatherData.current.wind_kph}</h3>
+            </Col>
+            <Col>
+            <h3 className='text-light display-5'>{weatherData.current.wind_kph}</h3>
+            </Col>
+          </Row>
+        </Container>
       </Container>
     );
   }

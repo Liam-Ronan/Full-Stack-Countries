@@ -1,42 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+const timeApiKey = import.meta.env.VITE_TIME_API_KEY;
+
 const TimeDetails = ({ countryData }) => {
-    const [currentUTCTime, setCurrentUTCTime] = useState('');
+    const [formattedTime, setFormattedTime] = useState('');
 
     useEffect(() => {
         const fetchCountryTime = () => {
-            const timeApiUrl = `https://worldtimeapi.org/api/timezone/${countryData.region}/${countryData.capital[0]}`;
-
-            axios.get(timeApiUrl)
+            axios({
+                method: 'get',
+                url: `https://api.api-ninjas.com/v1/worldtime?city=${countryData.capital[0]}`,
+                headers: {
+                    'X-Api-Key': timeApiKey,
+                },
+                responseType: 'json', // Ensure the response is treated as JSON
+            })
                 .then(res => {
+                    console.log(res.data);
                     const timeData = res.data;
-                    console.log(timeData);
-                    
-                    const currentTime = new Date(timeData.datetime);
-                    const formattedTime = currentTime.toUTCString();
-                    setCurrentUTCTime(formattedTime);
+                    const date = new Date(timeData.datetime);
+                    const monthName = date.toLocaleString('default', { month: 'long' });
+                    const formattedTime = `${timeData.day_of_week}, ${timeData.day}, ${monthName} ${timeData.hour}:${timeData.minute}`;
+                    setFormattedTime(formattedTime);
                 })
                 .catch(err => {
-                    console.error(err);
+                    console.error('Error: ', err);
                 });
         }
 
         fetchCountryTime();
 
-        const interval = setInterval(fetchCountryTime, 1000)
+        // You can use a setInterval if you want to continuously update the time
+        // const interval = setInterval(fetchCountryTime, 1000);
 
-        return () => {
-            clearInterval(interval)
-        }
-    }, [countryData])
+        // return () => {
+        //     clearInterval(interval);
+        // }
+    }, [countryData]);
 
     return (
         <>
-            {currentUTCTime ? (<h5 className='text-light fw-light'>{currentUTCTime}</h5>) 
-            : 
-            (null) }
-
+            {formattedTime ? (
+                <h5 className='text-light fw-light pt-3'>{formattedTime}</h5>
+            ) : (
+                null
+            )}
         </>
     );
 }

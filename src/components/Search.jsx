@@ -11,7 +11,7 @@ export const Search = ({ searchQuery, handleSearchInputChange, handleSearchSubmi
             <Form.Group className="form-floating rounded-3">
               <Form.Control
                 type="text"
-                className="form-control rounded-3"
+                className="form-control rounded-3 border border-3"
                 placeholder="Search Country..."
                 value={searchQuery}
                 onChange={handleSearchInputChange}

@@ -15,7 +15,7 @@ const Countries = ({ countries }) => {
                     <Card className="h-100 rounded-bottom-5 hover-zoom"> 
                         <Card.Img variant='top' src={country.flags.png} className="h-100" alt="..." />
                         <Card.Body className="rounded-bottom-5">
-                          <Card.Text className="px-1 fw-normal fs-5 text-light">{country.name.common}</Card.Text>
+                          <Card.Text className="px-1 fs-5 text-light">{country.name.common}</Card.Text>
                         </Card.Body>
                     </Card>
 
