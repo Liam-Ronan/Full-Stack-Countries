@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const timeApiKey = import.meta.env.VITE_TIME_API_KEY;
+const timeApiKey = import.meta.env.VITE_NINJA_API_KEY;
 
 const TimeDetails = ({ countryData }) => {
     const [formattedTime, setFormattedTime] = useState('');
@@ -30,19 +30,12 @@ const TimeDetails = ({ countryData }) => {
         }
 
         fetchCountryTime();
-
-        // You can use a setInterval if you want to continuously update the time
-        // const interval = setInterval(fetchCountryTime, 1000);
-
-        // return () => {
-        //     clearInterval(interval);
-        // }
     }, [countryData]);
 
     return (
         <>
             {formattedTime ? (
-                <h5 className='text-light fw-light pt-3'>{formattedTime}</h5>
+                <p className='text-light fw-light pt-3 fs-4'>{formattedTime}</p>
             ) : (
                 null
             )}
