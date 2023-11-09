@@ -56,19 +56,22 @@ const WeatherDetailsCard = ({ countryData }) => {
 
           <Row className='pt-3 text-center'>
             <Col>
+              <p className='text-light fw-bold'>WIND</p>
               <BsWind className='display-1 text-light'/>
               <h3 className='text-light display-5 pt-2 fw-bold'>{weatherData.current.wind_kph}</h3>
               <p className='text-light fw-bold'>KM/hr</p>
             </Col>
             <Col>
+            <p className='text-light fw-bold'>HUMIDITY</p>
               <WiHumidity className='display-1 text-light'/>
               <h3 className='text-light display-5 pt-2 fw-bold'>{weatherData.current.humidity}</h3>
               <p className='text-light fw-bold'>g/kg</p>
             </Col>
             <Col>
+            <p className='text-light fw-bold'>UV</p>
               <BsSunFill className='display-1 text-light'/>
               <h3 className='text-light display-5 pt-2 fw-bold'>{weatherData.current.uv}</h3>
-              <p className='text-light fw-bold'>UV</p>
+              <p className='text-light fw-bold'>mW/m²</p>
             </Col>
           </Row>
         </Container>

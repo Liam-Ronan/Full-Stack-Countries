@@ -9,10 +9,10 @@
 .card {
 	transition: all 0.6s ease;
 	cursor: pointer;
+	box-shadow: 8px 2px 8px 5px rgba(146, 130, 146, 0.55);
 }
 
 .card:hover {
-	box-shadow: 8px 8px 6px 5px rgba(80, 125, 177, 0.55);
 	transform: scale(1.05);
 }
 
@@ -22,7 +22,7 @@
 
 .hr {
     background-color: #ffffff;
-    height: 10px;
+    height: 5px;
 }
 
 .pink {
@@ -33,7 +33,21 @@
     background-color: #4a90e2;
 }
 
+.searchBar {
+	border: 1px solid rgba(146, 130, 146, 0.55);
+	box-shadow: 8px 0px 8px 5px rgba(146, 130, 146, 0.55);
+}
+
+.region {
+	border: 1px solid rgba(146, 130, 146, 0.55);
+	box-shadow: 8px 2px 8px 5px rgba(146, 130, 146, 0.55);
+}
+
 .red {
-	background-color: #F46161;
+	background-color: #f46161;
+}
+
+.green {
+	background-color: #007749;
 }
 

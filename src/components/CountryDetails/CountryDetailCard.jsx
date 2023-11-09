@@ -4,8 +4,12 @@ import { Container, Row, Button, Image, Col } from 'react-bootstrap'
 import WeatherDetailsCard from '../WeatherDetails/WeatherDetailsCard';
 import '../../App.css'
 import CountryStatsCard from '../CountryStats/CountryStatsCard';
+import CountryHistoryCard from '../CountryHistory/CountryHistoryCard';
 
 const CountryDetailCard = ({ countryData }) => {
+
+  const countryCodesArray = [];
+  countryCodesArray.push(countryData.cca2, countryData.cca3, countryData.ccn3, countryData.cioc)
 
   return (
     <>
@@ -31,37 +35,64 @@ const CountryDetailCard = ({ countryData }) => {
           </Row>
           
           <Container className='d-flex justify-content-center'>
-            <Row className='pt-3 text-light text-start g-5'>
-              <Col>
-              <h5>Region: <strong className='fw-light'>{countryData.region}</strong></h5>
-              <h5>Population: <strong className='fw-light'>{countryData.population.toLocaleString()}</strong></h5>
-              <h5>Capital: <strong className='fw-light'>{countryData.capital}</strong></h5>
-              </Col>
-              <Col>
-                <h5>Sub-Region: <strong className='fw-light'>{countryData.subregion}</strong></h5>
-                  {countryData.timezones > 1 ? (
+            <Row className='text-center fs-4 fw-bold text-light'>
+                  <Col md={6} className='pt-5'>
+                    
+                      <h5>Region: <strong className='fw-light'>{countryData.region}</strong></h5>
+                      <h5>Sub-Region: <strong className='fw-light'>{countryData.subregion}</strong></h5>
+                      <h5>Population: <strong className='fw-light'>{countryData.population.toLocaleString()}</strong></h5>
+                      <h5>Capital: <strong className='fw-light'>{countryData.capital}</strong></h5>            
+                   
+                  </Col>
+                  <Col md={6} className='pt-5'>
+                  
+                    {countryData.timezones > 1 ? (
                       <h5>Timezones: <strong className='fw-light'>{countryData.timezones[0]}</strong></h5>
                     ) : <h5>Timezones: <strong className='fw-light'>    {countryData.timezones[0]}</strong></h5>}
-                    <h5>Citizens are: <strong className='fw-light'>{countryData.demonyms.eng.f}</strong></h5>
-              </Col>
-              <Col>
-                {countryData.landlocked ? (
+
+                    {countryData.landlocked ? (
                       <h5>{countryData.name.common} is <strong className='fw-light'>Landlocked</strong></h5>
                     ) : <h5>{countryData.name.common} is <strong className='fw-light'>Not Landlocked</strong></h5>}
-                {countryData.independent ? (
+
+                    {countryData.independent ? (
                       <h5>{countryData.name.common} is <strong className='fw-light'>Independent</strong></h5>
                     ) : <h5>{countryData.name.common} is <strong className='fw-light'>Not Independent</strong></h5>}
-                      <Button className='mt-2' variant='light'>
-                        <a href={countryData.maps.googleMaps} target="_blank" rel="noopener noreferrer" className='text-dark fw-bold text-decoration-none'>{countryData.name.common} Map</a>
-                    </Button>
-              </Col>
-            </Row>
+
+                    <h5>Citizens are <strong className='fw-light'>{countryData.demonyms.eng.f}</strong></h5>
+                    
+                  </Col>
+                  <Col md={6} className='pt-5'>
+                                
+                    {countryData.landlocked ? (
+                      <h5>{countryData.name.common} is <strong className='fw-light'>Landlocked</strong></h5>
+                    ) : <h5>{countryData.name.common} is <strong className='fw-light'>Not Landlocked</strong></h5>}
+
+                      <h5>Status: <strong className='fw-light'>{countryData.status}</strong></h5>
+                      <h5>Latitude & Longitude: <strong className='fw-light'>{countryData.latlng[0]}, {countryData.latlng[1]}</strong></h5>
+                      <h5>Country Codes: <strong className='fw-light'>{countryCodesArray.join(', ')}</strong></h5>
+                   
+                  </Col>
+                  <Col md={6} className='pt-5'>
+                    <Col md={12}>
+                      <Button className='mt-3' variant='light'>
+                            <a href={countryData.maps.googleMaps} target="_blank" rel="noopener noreferrer" className='text-dark fw-bold text-decoration-none'>{countryData.name.common} Map</a>
+                      </Button>
+                    </Col>
+                    <Col md={12}>
+                      <Button className='mt-3' variant='light'>
+                            <a href={countryData.maps.openStreetMaps} target="_blank" rel="noopener noreferrer" className='text-dark fw-bold text-decoration-none'>{countryData.name.common} Street Map</a>
+                      </Button>
+                    </Col>
+                  </Col>
+                </Row>
           </Container>
         </Container>  
 
         {countryData ? <WeatherDetailsCard countryData={countryData} /> : <p className='text-dark fs-3'>Loading...</p>}
 
         {countryData ? <CountryStatsCard countryData={countryData} /> : <p className='text-dark fs-3'>Loading...</p>}
+
+        {countryData ? <CountryHistoryCard countryData={countryData} /> : <p className='text-dark fs-3'>Loading...</p>}
 
         <Container className="d-flex justify-content-center mt-5 pb-5 mb-5">
           <Link className="text-dark text-decoration-none btn btn-outline-dark mt-3 mb-5 w-25" to="/">Back</Link>

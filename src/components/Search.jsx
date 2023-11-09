@@ -7,11 +7,11 @@ export const Search = ({ searchQuery, handleSearchInputChange, handleSearchSubmi
     <Container fluid className="mb-4 mb-sm-0">
       <Row>
         <Col lg={10} md={10} sm={10}>
-          <Form onSubmit={handleSearchSubmit} className="text-dark">
-            <Form.Group className="form-floating rounded-3">
+          <Form onSubmit={handleSearchSubmit}>
+            <Form.Group className="searchBar form-floating rounded-4">
               <Form.Control
                 type="text"
-                className="form-control rounded-3 border border-3"
+                className="form-control rounded-4"
                 placeholder="Search Country..."
                 value={searchQuery}
                 onChange={handleSearchInputChange}

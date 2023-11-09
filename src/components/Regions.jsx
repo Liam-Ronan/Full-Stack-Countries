@@ -12,7 +12,7 @@ const Regions = ({ onSelect }) => {
     <Container>
       <Row>
         <Col>
-          <Form.Select onChange={selectHandler} className='p-3 rounded-3 border border-3'>
+          <Form.Select onChange={selectHandler} className='region p-3 rounded-4'>
             <option value="all">All</option>
             <option value="Africa">Africa</option>
             <option value="America">America</option>
