@@ -4,7 +4,7 @@ import axios from 'axios';
 const timeApiKey = import.meta.env.VITE_NINJA_API_KEY;
 
 const TimeDetails = ({ countryData }) => {
-    const [formattedTime, setFormattedTime] = useState('');
+    const [formattedTime, setFormattedTime] = useState([]);
 
     useEffect(() => {
         const fetchCountryTime = () => {

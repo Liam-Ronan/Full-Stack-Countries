@@ -13,7 +13,7 @@ const AllCountryCards = () => {
   const [searchQuery, setSearchQuery] = useState(''); 
   const [filteredCountries, setFilteredCountries] = useState([]);
 
-  /* useEffect hook to fetch data from back-end & updates setCountryData with the fetched data */
+  /* useEffect hook to fetch data & updates setCountryData with the fetched data */
   // Getting all countries
   useEffect(() => {
     const getAllCountries = () => {
@@ -29,7 +29,7 @@ const AllCountryCards = () => {
     getAllCountries()
   }, []);
 
-  
+  //Getting countries by region
   const countriesByRegion = (regionName) => {
       
       if(regionName === 'all') {
@@ -60,7 +60,7 @@ const AllCountryCards = () => {
 
   //Called when user submits search form, filters the countryData based on search query, and updates filteredCountries
   const handleSearchSubmit = (e) => {
-    e.preventDefault(); // Prevent the default form submission
+    e.preventDefault(); 
 
     // Filter countries based on search query
     const filtered = countryData.filter((country) =>
@@ -75,27 +75,23 @@ const AllCountryCards = () => {
   return (
          
       <>
-            <Header />
-            
-              <Row className='pt-3'>
-                <Col sm={10} className='px-4'>
-                  <Search
-                    searchQuery={searchQuery}
-                    handleSearchInputChange={handleSearchInputChange}
-                    handleSearchSubmit={handleSearchSubmit}
-                  />
-                </Col>
-                <Col sm={2} className='px-4'>
-                  <Regions onSelect={countriesByRegion}/>
-                </Col>
-              </Row>
-            
-            <Countries countries={countriesToMap} />
-      </>
+        <Header />
 
-
+          <Row className='pt-3'>
+            <Col sm={10} className='px-4'>
+              <Search
+                searchQuery={searchQuery}
+                handleSearchInputChange={handleSearchInputChange}
+                handleSearchSubmit={handleSearchSubmit}
+              />
+            </Col>
+            <Col sm={2} className='px-4'>
+              <Regions onSelect={countriesByRegion}/>
+            </Col>
+          </Row>
         
-    
+        <Countries countries={countriesToMap} />
+      </>
   );
 };
 

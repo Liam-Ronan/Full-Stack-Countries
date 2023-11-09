@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Container, Row, Image, Col } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import '../../App.css'
 import { BsCoin } from "react-icons/bs";
 import { FaPeopleGroup } from "react-icons/fa6";
@@ -57,9 +57,9 @@ const CountryStatsCard = ({ countryData }) => {
                     <h5>GDP Per Capita: <strong className='fw-light'>{statsData[0].gdp_per_capita}%</strong></h5>
                     <h5>GDP Growth: <strong className='fw-light'>{statsData[0].gdp_growth}%</strong></h5>
                     <h5>GDP: <strong className='fw-light'>{statsData[0].gdp}</strong></h5>
-                    <h5>Imports: <strong className='fw-light'>{statsData[0].imports.toLocaleString()}</strong></h5>
-                    <h5>Exports: <strong className='fw-light'>{statsData[0].exports.toLocaleString()}</strong></h5>                
-                  </Col>
+                    <h5>Imports: <strong className='fw-light'>{statsData[0].imports}</strong></h5>
+                    <h5>Exports: <strong className='fw-light'>{statsData[0].exports}</strong></h5>                
+                  </Col>            
                 </Col>
                 <Col md={6} className='pt-5'>
                   <Col>
@@ -93,7 +93,7 @@ const CountryStatsCard = ({ countryData }) => {
                   </Col>
                   <Col>
                     <h5>Secondary School Enrollment Males: <strong className='fw-light'>{statsData[0].secondary_school_enrollment_male}%</strong></h5>
-                    <h5>Secondary School Enrollment Females: <strong className='fw-light'>{statsData[0].secondary_school_enrollment_female}</strong></h5>
+                    <h5>Secondary School Enrollment Females: <strong className='fw-light'>{statsData[0].secondary_school_enrollment_female}%</strong></h5>
                     <h5>Post Secondary School Enrollment Males: <strong className='fw-light'>{statsData[0].post_secondary_enrollment_male}%</strong></h5>
                     <h5>Post Secondary School Enrollment Females: <strong className='fw-light'>{statsData[0].post_secondary_enrollment_female}%</strong></h5>
                   </Col>
@@ -105,7 +105,7 @@ const CountryStatsCard = ({ countryData }) => {
     )
   }
   else {
-    return null;
+    <p className='text-center pt-2'>Loading or no Stats data available.</p>
   }
 }
 

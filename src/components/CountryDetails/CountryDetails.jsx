@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { Header } from '../Header';
 import CountryDetailCard from './CountryDetailCard';
 import axios from 'axios';
-import { Container } from 'react-bootstrap';
 
 const CountryDetail = () => {
   const [countryData, setCountryData] = useState(null);
@@ -27,10 +26,8 @@ const CountryDetail = () => {
   return (
     
     <>
-    
         <Header />
         {countryData ? <CountryDetailCard countryData={countryData} /> : <p className='text-dark fs-3'>Loading...</p>}
-     
     </>      
       
       
