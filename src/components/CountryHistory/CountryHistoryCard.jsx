@@ -33,28 +33,33 @@ const CountryHistoryCard = ({ countryData }) => {
     fetchHistory();
   }, [countryData]);
 
-  return (
-    <Container fluid className='p-5 rounded-bottom-5 green'>
-      <Container className='p-3'>
-        <Row className='d-flex justify-content-center text-center'>
-          <h1 className='display-3 fw-bold text-light text-center'>Historical Events</h1>
-          <Col md={3} xs={5} className='hr rounded-3'></Col>
-        </Row>
-        <Row className='px-3 pt-4 text-center fs-4 fw-bold text-light'>
-          {filteredData.length > 0 ? (
-            filteredData.map((item, index) => (
-              <Col md={4} xs={12} key={index} className='pt-5 text-start'>
-                <p>{item.day}/{item.month}/{item.year}</p>
-                <h5 className='fw-light'>{item.event}</h5>
-              </Col>
-            ))
-          ) : (
-            <p className='text-center pt-2'>Loading or no History data available.</p>
-          )}
-        </Row>
+  if(filteredData.length > 0) {
+    return (
+      <Container fluid className='p-5 rounded-bottom-5 green'>
+        <Container className='p-3'>
+          <Row className='d-flex justify-content-center text-center'>
+            <h1 className='display-3 fw-bold text-light text-center'>Historical Events</h1>
+            <Col md={3} xs={5} className='hr rounded-3'></Col>
+          </Row>
+          <Row className='px-3 pt-4 text-center fs-4 fw-bold text-light'>
+            {filteredData.length > 0 ? (
+              filteredData.map((item, index) => (
+                <Col md={4} xs={12} key={index} className='pt-5 text-start'>
+                  <p>{item.day}/{item.month}/{item.year}</p>
+                  <h5 className='fw-light'>{item.event}</h5>
+                </Col>
+              ))
+            ) : (
+              <p className='text-center pt-2'>Loading or no History data available.</p>
+            )}
+          </Row>
+        </Container>
       </Container>
-    </Container>
-  );
+    );
+  }
+  else {
+    <p className='text-center pt-2'>Loading or no Stats data available.</p>
+  }
 };
 
 export default CountryHistoryCard;
