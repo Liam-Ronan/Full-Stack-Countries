@@ -105,7 +105,7 @@ const CountryStatsCard = ({ countryData }) => {
     )
   }
   else {
-    <p className='text-center pt-2'>Loading or no Stats data available.</p>
+    return null;
   }
 }
 

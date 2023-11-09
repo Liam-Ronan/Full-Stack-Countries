@@ -64,11 +64,8 @@ const CountryDetailCard = ({ countryData }) => {
                     
                   </Col>
                   <Col md={6} className='pt-5'>
-                  <div className="text-align">           
-                    {countryData.landlocked ? (
-                      <h5>{countryData.name.common} is <strong className='fw-light'>Landlocked</strong></h5>
-                    ) : <h5>{countryData.name.common} is <strong className='fw-light'>Not Landlocked</strong></h5>}
-
+                  <div className="text-align">            
+                     <h5>Official Name: <strong className='fw-light'>{countryData.name.official}</strong></h5>
                       <h5>Status: <strong className='fw-light'>{countryData.status}</strong></h5>
                       <h5>Latitude & Longitude: <strong className='fw-light'>{countryData.latlng[0].toFixed(1)}, {countryData.latlng[1].toFixed(1)}</strong></h5>
                       <h5>Country Codes: <strong className='fw-light'>{countryCodesArray.join(', ')}</strong></h5>
