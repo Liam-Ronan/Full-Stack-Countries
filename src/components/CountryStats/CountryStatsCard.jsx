@@ -10,7 +10,7 @@ import { PiBooksFill } from "react-icons/pi";
 const statsApiKey = import.meta.env.VITE_NINJA_API_KEY;
 
 const CountryStatsCard = ({ countryData }) => {
-  const [statsData, setStatsData] = useState(null);
+  const [statsData, setStatsData] = useState([]);
 
   useEffect(() => {
     const fetchStats = () => {
@@ -37,7 +37,7 @@ const CountryStatsCard = ({ countryData }) => {
     fetchStats();
 }, [countryData]);
 
-  if(statsData) {
+  if(statsData.length > 0) {
     return (
    
          <Container fluid className='p-5 red'>
@@ -105,7 +105,7 @@ const CountryStatsCard = ({ countryData }) => {
     )
   }
   else {
-    
+    return null;
   }
 }
 

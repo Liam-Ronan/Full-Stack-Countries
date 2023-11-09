@@ -37,32 +37,35 @@ const CountryDetailCard = ({ countryData }) => {
           <Container className='d-flex justify-content-center'>
             <Row className='text-center fs-4 fw-bold text-light'>
                   <Col md={6} className='pt-5'>
-                    
+                    <div className="text-align">
                       <h5>Region: <strong className='fw-light'>{countryData.region}</strong></h5>
-                      <h5>Sub-Region: <strong className='fw-light'>{countryData.subregion}</strong></h5>
-                      <h5>Population: <strong className='fw-light'>{countryData.population.toLocaleString()}</strong></h5>
-                      <h5>Capital: <strong className='fw-light'>{countryData.capital}</strong></h5>            
+                        <h5>Sub-Region: <strong className='fw-light'>{countryData.subregion}</strong></h5>
+                        <h5>Population: <strong className='fw-light'>{countryData.population.toLocaleString()}</strong></h5>
+                        <h5>Capital: <strong className='fw-light'>{countryData.capital}</strong></h5> 
+                    </div>
+                        
                    
                   </Col>
                   <Col md={6} className='pt-5'>
-                  
+                  <div className="text-align">
                     {countryData.timezones > 1 ? (
-                      <h5>Timezones: <strong className='fw-light'>{countryData.timezones[0]}</strong></h5>
-                    ) : <h5>Timezones: <strong className='fw-light'>    {countryData.timezones[0]}</strong></h5>}
+                        <h5>Timezones: <strong className='fw-light'>{countryData.timezones[0]}</strong></h5>
+                      ) : <h5>Timezones: <strong className='fw-light'>    {countryData.timezones[0]}</strong></h5>}
 
-                    {countryData.landlocked ? (
-                      <h5>{countryData.name.common} is <strong className='fw-light'>Landlocked</strong></h5>
-                    ) : <h5>{countryData.name.common} is <strong className='fw-light'>Not Landlocked</strong></h5>}
+                      {countryData.landlocked ? (
+                        <h5>{countryData.name.common} is <strong className='fw-light'>Landlocked</strong></h5>
+                      ) : <h5>{countryData.name.common} is <strong className='fw-light'>Not Landlocked</strong></h5>}
 
-                    {countryData.independent ? (
-                      <h5>{countryData.name.common} is <strong className='fw-light'>Independent</strong></h5>
-                    ) : <h5>{countryData.name.common} is <strong className='fw-light'>Not Independent</strong></h5>}
+                      {countryData.independent ? (
+                        <h5>{countryData.name.common} is <strong className='fw-light'>Independent</strong></h5>
+                      ) : <h5>{countryData.name.common} is <strong className='fw-light'>Not Independent</strong></h5>}
 
-                    <h5>Citizens are <strong className='fw-light'>{countryData.demonyms.eng.f}</strong></h5>
+                      <h5>Citizens are <strong className='fw-light'>{countryData.demonyms.eng.f}</strong></h5>
+                  </div>
                     
                   </Col>
                   <Col md={6} className='pt-5'>
-                                
+                  <div className="text-align">           
                     {countryData.landlocked ? (
                       <h5>{countryData.name.common} is <strong className='fw-light'>Landlocked</strong></h5>
                     ) : <h5>{countryData.name.common} is <strong className='fw-light'>Not Landlocked</strong></h5>}
@@ -70,9 +73,10 @@ const CountryDetailCard = ({ countryData }) => {
                       <h5>Status: <strong className='fw-light'>{countryData.status}</strong></h5>
                       <h5>Latitude & Longitude: <strong className='fw-light'>{countryData.latlng[0]}, {countryData.latlng[1]}</strong></h5>
                       <h5>Country Codes: <strong className='fw-light'>{countryCodesArray.join(', ')}</strong></h5>
-                   
+                   </div>
                   </Col>
                   <Col md={6} className='pt-5'>
+                  <div className="text-align"> 
                     <Col md={12}>
                       <Button className='mt-3' variant='light'>
                             <a href={countryData.maps.googleMaps} target="_blank" rel="noopener noreferrer" className='text-dark fw-bold text-decoration-none'>{countryData.name.common} Map</a>
@@ -83,7 +87,9 @@ const CountryDetailCard = ({ countryData }) => {
                             <a href={countryData.maps.openStreetMaps} target="_blank" rel="noopener noreferrer" className='text-dark fw-bold text-decoration-none'>{countryData.name.common} Street Map</a>
                       </Button>
                     </Col>
+                    </div>
                   </Col>
+                 
                 </Row>
           </Container>
         </Container>  
